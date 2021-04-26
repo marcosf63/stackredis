@@ -1,0 +1,10 @@
+FROM redis
+
+COPY redis-entrypoint.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/redis-entrypoint.sh
+
+VOLUME /redis/etc
+
+ENTRYPOINT ["redis-entrypoint.sh"]
+
