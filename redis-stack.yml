@@ -15,7 +15,7 @@ services:
       - rfbbot-net
 
   redis-master:
-    image: 127.0.0.1:5000/master-redis
+    image: 127.0.0.1:5000/master-worker-redis
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
@@ -28,7 +28,7 @@ services:
       - rfbbot-net
 
   redis-worker1-node1:
-    image: 127.0.0.1:5000/master-redis
+    image: 127.0.0.1:5000/master-worker-redis
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
@@ -43,7 +43,7 @@ services:
       - rfbbot-net
 
   redis-worker2-node2:
-    image: 127.0.0.1:5000/master-redis
+    image: 127.0.0.1:5000/master-worker-redis
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis

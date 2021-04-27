@@ -6,13 +6,13 @@ echo "##############################"
 echo "Fazendo o deply da stack-redis"
 echo "##############################"
 
-export REDIS_MASTER_HOSTNAME=$1
-export REDIS_WORKER_NODE1_HOSTNAME=$2
-export REDIS_WORKER_NODE2_HOSTNAME=$3
+export REDIS_MASTER_HOSTNAME=node01
+export REDIS_WORKER_NODE1_HOSTNAME=node02
+export REDIS_WORKER_NODE2_HOSTNAME=node03
 
 if [ -z $REDIS_MASTER_HOSTNAME  ] || [ -z $REDIS_WORKER_NODE1_HOSTNAME  ]  || [ -z $REDIS_WORKER_NODE2_HOSTNAME  ] ; 
 then
-    echo "Faltando argumentos: SENTINEL_HOSTNAME, REDIS_MASTER_HOSTNAME, REDIS_SLAVE_NODE1_HOSTNAME, REDIS_SLAVE_NODE1_HOSTNAME" >&2
+    echo "Faltando argumentos: REDIS_MASTER_HOSTNAME, REDIS_SLAVE_NODE1_HOSTNAME, REDIS_SLAVE_NODE1_HOSTNAME" >&2
     exit 1;
 fi
 
@@ -35,10 +35,10 @@ echo "Master hostname e IP: $REDIS_MASTER_HOSTNAME $REDIS_MASTER_IP"
 echo "Redis worker 1 hostname: $REDIS_WORKER_NODE1_HOSTNAME"
 echo "Redis worker 2 hostname: $REDIS_WORKER_NODE2_HOSTNAME"
 
-docker stack deply -c redis-stack.yml stack-redis
+docker stack deploy -c redis-stack.yml stack-redis
 
 echo "Deploy finalizado. Aguarde enqendo os serviços são inicliazado\n\n"
 
-sleep 3s
+sleep 5s
 
-docker servces ls
+docker service ls
