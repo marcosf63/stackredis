@@ -4,7 +4,8 @@ services:
   redis-build:
     image: 127.0.0.1:5000/master-worker-redis
     build: 
-      context: .
-      dockerfile: ./Dockerfile-redis
+      contetx: .
+      dockerfile: ./Dockerfile
+
     ports:
       - "6379:6379"
