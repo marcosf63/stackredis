@@ -16,7 +16,7 @@ ENV REDIS_MASTER_NAME=mymaster \
 
 COPY redis-sentinel-entrypoint.sh /usr/lobal/bin/
 
-RUN chmod =X /usr/local/bin/redis-sentinel-entrypoint.sh
+RUN chmod +x /usr/local/bin/redis-sentinel-entrypoint.sh
 
 VOLUME /etc/redis
 

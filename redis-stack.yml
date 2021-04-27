@@ -6,8 +6,7 @@ services:
     volumes:
       - sentinel-conf:/etc/redis
     deploy:
-      constrainsts:
-        - node.labels.redis-stack == true
+      mode: global
     environment:
       - REDIS_MASTER_HOST=${REDIS_MASTER_IP}
       - SENTINEL_DOWN_AFTER=5000
@@ -24,7 +23,7 @@ services:
       mode: global
       placement:
         constraints:
-          - node.labels.redis-master == true
+          - node.hostname == ${REDIS_MASTER_HOSTNAME}
     networks:
       - rfbbot-net
 
@@ -39,7 +38,7 @@ services:
       mode: global
       placement:
         constraints:
-          - node.labels.redis-worker1 == true
+          - node.hostname == ${REDIS_WORKER_NODE1_HOSTNAME}
     networks:
       - rfbbot-net
 
@@ -54,19 +53,9 @@ services:
       mode: global
       placement:
         constraints:
-          - node.labels.redis-worker2 == true
+          - node.hostname == ${REDIS_WORKER_NODE2_HOSTNAME}
     networks:
       - rfbbot-net
-
-  agile-python-app:
-    image: 127.0.0.1:5000/agile-python-app
-    ports:
-      - "38000:611"
-    deploy:
-      mode: replicated
-      replicas: 3
-    environment:
-      - SENTINEL_HOST=${SENTINEL_IP}
 
 volumes:
   redis-data:
