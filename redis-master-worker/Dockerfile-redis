@@ -4,7 +4,7 @@ COPY redis-entrypoint.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/redis-entrypoint.sh
 
-VOLUME /redis/etc
+VOLUME /etc/redis
 
 ENTRYPOINT ["redis-entrypoint.sh"]
 
