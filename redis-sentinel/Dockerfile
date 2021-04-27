@@ -14,7 +14,7 @@ ENV REDIS_MASTER_NAME=mymaster \
     SENTINEL_PARALLEL_SYNC=1 \
     SENTINEL_FAILOVER_TIMEOUT=18000
 
-COPY redis-sentinel-entrypoint.sh /usr/lobal/bin/
+COPY redis-sentinel-entrypoint.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/redis-sentinel-entrypoint.sh
 

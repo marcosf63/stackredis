@@ -6,5 +6,6 @@ services:
     build: 
       contetx: .
       dockerfile: ./Dockerfile
+
     ports:
       - "6379:6379"
