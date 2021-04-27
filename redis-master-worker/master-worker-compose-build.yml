@@ -5,6 +5,6 @@ services:
     image: 127.0.0.1:5000/master-worker-redis
     build: 
       contetx: .
-      dockerfile: ./Dockerfile-redis
+      dockerfile: ./Dockerfile
     ports:
       - "6379:6379"
