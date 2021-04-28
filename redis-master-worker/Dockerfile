@@ -6,5 +6,7 @@ RUN chmod +x /usr/local/bin/redis-entrypoint.sh
 
 VOLUME /etc/redis
 
-ENTRYPOINT ["redis-entrypoint.sh"]
+EXPOSE 6379
+
+ENTRYPOINT ["bash", "redis-entrypoint.sh"]
 

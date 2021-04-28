@@ -2,7 +2,7 @@
 
 CONF_FILE=/etc/redis/redis.conf
 
-if [ ! -f $CONF_FILE]
+if [ ! -f $CONF_FILE ]
 then
     echo "appendonly yes" > $CONF_FILE
 

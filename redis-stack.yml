@@ -5,6 +5,8 @@ services:
     image: 127.0.0.1:5000/redis-sentinel
     volumes:
       - sentinel-conf:/etc/redis
+    ports:
+      - 26379:26379
     deploy:
       mode: global
     environment:
@@ -15,10 +17,12 @@ services:
       - rfbbot-net
 
   redis-master:
-    image: 127.0.0.1:5000/master-redis
+    image: 127.0.0.1:5000/master-worker-redis
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
+    ports:
+      - 6379:6379 
     deploy:
       mode: global
       placement:
@@ -28,10 +32,12 @@ services:
       - rfbbot-net
 
   redis-worker1-node1:
-    image: 127.0.0.1:5000/master-redis
+    image: 127.0.0.1:5000/master-worker-redis
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
+    ports:
+      - 6379:6379 
     environment:
       - REDIS_MASTER_HOST=${REDIS_MASTER_IP}
     deploy:
@@ -43,10 +49,12 @@ services:
       - rfbbot-net
 
   redis-worker2-node2:
-    image: 127.0.0.1:5000/master-redis
+    image: 127.0.0.1:5000/master-worker-redis
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
+    ports:
+      - 6379:6379 
     environment:
       - REDIS_MASTER_HOST=${REDIS_MASTER_IP}
     deploy:
