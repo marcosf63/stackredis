@@ -5,6 +5,8 @@ services:
     image: 127.0.0.1:5000/redis-sentinel
     volumes:
       - sentinel-conf:/etc/redis
+    ports:
+      - 26379:26379
     deploy:
       mode: global
     environment:
@@ -19,6 +21,8 @@ services:
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
+    ports:
+      - 6379:6379 
     deploy:
       mode: global
       placement:
@@ -32,6 +36,8 @@ services:
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
+    ports:
+      - 6379:6379 
     environment:
       - REDIS_MASTER_HOST=${REDIS_MASTER_IP}
     deploy:
@@ -47,6 +53,8 @@ services:
     volumes:
       - redis-data:/data
       - redis-conf:/etc/redis
+    ports:
+      - 6379:6379 
     environment:
       - REDIS_MASTER_HOST=${REDIS_MASTER_IP}
     deploy:

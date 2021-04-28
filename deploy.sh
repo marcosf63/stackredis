@@ -6,9 +6,9 @@ echo "##############################"
 echo "Fazendo o deply da stack-redis"
 echo "##############################"
 
-export REDIS_MASTER_HOSTNAME=node01
-export REDIS_WORKER_NODE1_HOSTNAME=node02
-export REDIS_WORKER_NODE2_HOSTNAME=node03
+export REDIS_MASTER_HOSTNAME=manager01
+export REDIS_WORKER_NODE1_HOSTNAME=manager02
+export REDIS_WORKER_NODE2_HOSTNAME=manager03
 
 if [ -z $REDIS_MASTER_HOSTNAME  ] || [ -z $REDIS_WORKER_NODE1_HOSTNAME  ]  || [ -z $REDIS_WORKER_NODE2_HOSTNAME  ] ; 
 then
